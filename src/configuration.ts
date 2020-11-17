@@ -1,4 +1,4 @@
-import HtmlOverlay from "./editor/html-overlay";
+// import HtmlOverlay from "./editor/html-overlay";
 
 /**
  * Contains configuration options for the game instance.
@@ -15,7 +15,7 @@ export default class Configuration {
     /**
      * The overlays to be registered if they are enabled when the overlays are initialized.
      */
-    htmlOverlays: Array<HtmlOverlay> = new Array();
+    // htmlOverlays: Array<HtmlOverlay> = new Array();
 
     /**
      * The background fill that immediately fill the canvas area after the clearCanvas method to called in the draw method.

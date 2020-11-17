@@ -2,7 +2,7 @@ const path = require('path');
 let CopyWebpackPlugin  = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './demo.ts',
+  entry: './src/editor.ts',
   mode: 'development',
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
@@ -27,17 +27,6 @@ module.exports = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          'style-loader',
-          // Translates CSS into CommonJS
-          'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
-        ],
       }
     ],
   },

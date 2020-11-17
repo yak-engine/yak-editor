@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'animations';
+@import 'layout';
+@import 'components';
+@import 'colors';
+@import 'typography';
+@import 'helpers';
+@import 'dashboard';
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
