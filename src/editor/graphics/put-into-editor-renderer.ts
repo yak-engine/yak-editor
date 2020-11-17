@@ -1,6 +1,7 @@
-import Point from "../../yak-engine/src/primitives/Point";
-import Transform from "../../yak-engine/src/primitives/transform";
 // import EditorRenderer from "./editor-renderer";
+
+import Point from "../../../yak-engine/src/primitives/Point";
+import Transform from "../../../yak-engine/src/primitives/transform";
 
 export default class Graphics {
     /**

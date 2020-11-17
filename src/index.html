@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <title>Yak Engine</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div style="position: absolute; top: 30px; left: 30px; width: 300px;"></div>
+    <div style="position: absolute; top: 30px; right: 30px; width: 300px;"></div>
+    <div class="bottom-left-container" style="position: absolute; bottom: 30px; left: 30px; width: 300px;"></div>
+    <div class="bottom-right-container" style="position: absolute; bottom: 30px; right: 30px; width: 300px;"></div>
+
+    <div class="mb-0 fill-light is-shadowed" style="z-index: 1000;">
+        <div class="container">
+            <ul class="nav nav-menu">
+                <div class="nav-left">
+                    <ul class="nav-item">
+                        <li class="menu-item">
+                            <div role="button" tabindex="0">File</div>
+                            <ul class="sub-menu">
+                                <li>
+                                    <div role="button" tabindex="0">New map</div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div role="button" tabindex="0">View</div>
+                            <ul class="sub-menu">
+                                <li>
+                                    <div>
+                                        <input type="checkbox" id="toggle-layer-highlighting" name="toggle-layer-highlighting" class="chk-highlight-current-layer" />
+                                        <label for="toggle-layer-highlighting">Toggle layer highlighting</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div role="button" tabindex="0">Options</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-right">
+                    <ul class="nav-item">
+                        <li class="menu-item">
+                            <div role="button" tabindex="0" class="btn-play">
+                                <i class="fa fa-play fa-lg text-green-darken-2 mr-default"></i>
+                                <span>Play</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="nav nav-menu mb-0 fill-light is-shadowed" style="z-index: 500;">
+        <div class="container">
+            <div class="nav-left"></div>
+            <div class="nav-right">
+                <ul class="nav-item">
+                    <li>
+                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="1" title="Select">
+                            <i class="fa fa-mouse-pointer fa-lg"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="2" title="Stamp">
+                            <i class="fa fa-cube fa-lg"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="3" title="Shape fill">
+                            <i class="fa fa-object-group fa-lg"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="4" title="Bucket fill">
+                            <i class="fa fa-flask fa-lg"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="5">
+                            <i class="fa fa-object-group fa-lg"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="6" title="Eraser">
+                            <i class="fa fa-eraser fa-lg text-red-lighten-2"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </ul>
+
+    <div class="main" style="height: 100%; flex: 1; display: flex; flex-direction: row;">
+        <div class="editor-left" style="width: 300px;">
+            test
+        </div>
+        <div class="canvas-container" style="background-color: #ccc; display: flex; height: 100%; flex: 1; justify-content: center; align-items: center;">
+            <div style="min-width: 512px; overflow: auto;">
+                <canvas id="editor-canvas" tabindex="-1" width="512" height="512"></canvas>
+            </div>
+        </div>
+        <div class="editor-right">
+
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.btn-play').addEventListener('click', (event) => {
+            alert('test');
+            window.open('http://localhost:9000/play', '_blank');
+        })
+    </script>
+
+    <script src="editor.js"></script>
+</body>
+</html>

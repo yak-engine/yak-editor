@@ -2,7 +2,7 @@ const path = require('path');
 let CopyWebpackPlugin  = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/editor.ts',
+  entry: './src/editor/startup.ts',
   mode: 'development',
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
@@ -34,15 +34,27 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ],
   },
   output: {
-    filename: 'bundle.js',
+    filename: 'editor.js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: './src/editor/panes/**/*.html',
-          to: 'overlays',
+          from: './src/server.js',
+          to: '',
+        },
+        {
+          from: './src/editor/**/*.html',
+          to: 'panes',
+        },
+        {
+          from: './src/index.html',
+          to: '',
+        },
+        {
+          from: './src/play.html',
+          to: '',
         }
       ],
     }),
