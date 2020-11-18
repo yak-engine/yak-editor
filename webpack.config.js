@@ -46,7 +46,7 @@ module.exports = {
         },
         {
           from: './src/editor/**/*.html',
-          to: 'panes',
+          to: '',
         },
         {
           from: './src/index.html',

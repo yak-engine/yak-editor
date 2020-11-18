@@ -7,6 +7,10 @@
 @import 'helpers';
 @import 'dashboard';
 
+.component {
+    padding: 30px;
+}
+
 html, body{
     margin: 0;
     padding: 0;
@@ -53,6 +57,10 @@ html, body {
     position: relative;
 }
 
+.nav-menu ul li:hover {
+    background-color: #ccc;
+}
+
 .nav-menu ul li .sub-menu {
     background-color: #000000;
     position: absolute;
@@ -60,10 +68,24 @@ html, body {
     width: 200px;
     background: #111;
     z-index: 100;
+    display: none;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 0;
+    top: 48px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 .nav-menu ul li.expanded .sub-menu {
     display: block;
+}
+
+.nav-menu ul li.expanded .sub-menu li {
+    padding: 10px;
 }
 
 .nav-menu ul li input[type="checkbox"] {
@@ -86,15 +108,6 @@ button {
     font-size: 16px;
     border: none;
     padding: 5px 8px;
-}
-
-input {
-    background: #EDF2F7;
-    border: none;
-    font-size: 14px;
-    color: #2d3748;
-    height: 25px;
-    width: 100%;
 }
 
 .text-red {
@@ -206,17 +219,6 @@ button.active {
     font-size: 18px;
 }
 
-input {
-    background-color: #56636A;
-    color: white;
-    padding: 0 5px;
-}
-
-input:focus {
-    outline: 1px solid white;
-    border: none;
-}
-
 .overlay-content {
     font-size: 16px;
     flex: 1;
@@ -284,4 +286,66 @@ input:focus {
 
 .pixel-dimensions div:last-child {
     margin-right: 0;
+}
+
+// Accessible modals
+.a11y-modal-container {
+    display: none;
+    position: fixed;
+    overflow-y: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.a11y-modal {
+    background-color: white;
+    border-radius: 8px;
+    width: 768px;
+}
+
+/* @media (max-width: 800px) {
+    .a11y-modal {
+        
+    }
+} */
+
+.a11y-modal-banner {
+    background-color: white;
+    padding: 12px 24px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.a11y-modal-banner .a11y-modal-title {
+    margin: 0;
+    padding: 0;
+}
+
+.a11y-modal-content {
+    background-color: #f9f9fb;
+    padding: 12px 24px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.a11y-modal-footer {
+    padding: 12px 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.a11y-open {
+    display: flex;
+}
+
+.a11y-hidden {
+    display: none;
 }

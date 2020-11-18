@@ -7,12 +7,12 @@ export default class EditorRenderer {
     /**
      * The canvas located within the default index.html document.
      */
-    public engineCanvas: HTMLCanvasElement = <HTMLCanvasElement>document.querySelector('#editor-canvas');
+    public engineCanvas: HTMLCanvasElement;
 
     /**
      * The 2D rendering context for the default canvas.
      */
-    public context: CanvasRenderingContext2D = <CanvasRenderingContext2D>this.engineCanvas.getContext('2d');
+    public context: CanvasRenderingContext2D;
 
     /**
      * The current mode for the sprite editor.
@@ -38,6 +38,9 @@ export default class EditorRenderer {
     public hoveredSprite: Sprite;
 
     constructor() {
+        this.engineCanvas = <HTMLCanvasElement>document.querySelector('#editor-canvas');
+        this.context = <CanvasRenderingContext2D>this.engineCanvas.getContext('2d');
+
         // this.canvas = canvas;
 
         // document.addEventListener('keydown', (event: KeyboardEvent) => {

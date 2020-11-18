@@ -1,7 +1,10 @@
 import EditorRenderer from "./editor-renderer";
+import EditorApplication from "./EditorApplication";
 
 export default class Startup {
-    editorRenderer: EditorRenderer = new EditorRenderer();
+    // editorRenderer: EditorRenderer = new EditorRenderer();
+
+    editorAPp: EditorApplication = new EditorApplication();
 
     /**
      * Actually begins the game instance. Processes the configuration.
@@ -52,7 +55,7 @@ export default class Startup {
 
         // Time.calculateDeltaTime(time);
         
-        this.editorRenderer.run();
+        // this.editorRenderer.run();
 
         // this.graphics.draw(time);
         // this.graphics.render();

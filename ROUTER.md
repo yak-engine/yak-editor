@@ -1,0 +1,9 @@
+- Load template
+    - Template engine retrieves markup from file system
+    - New binding instance get created using markup
+        - Creates document fragment
+        - Queries component tags
+        - Queries router outlets
+            - ???
+        - Queries bindings (input)
+        - Queries expressions (double curly braces)

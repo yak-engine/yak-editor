@@ -9,113 +9,69 @@
 </head>
 
 <body>
-    <div style="position: absolute; top: 30px; left: 30px; width: 300px;"></div>
-    <div style="position: absolute; top: 30px; right: 30px; width: 300px;"></div>
-    <div class="bottom-left-container" style="position: absolute; bottom: 30px; left: 30px; width: 300px;"></div>
-    <div class="bottom-right-container" style="position: absolute; bottom: 30px; right: 30px; width: 300px;"></div>
+    <div id="app-root"></div>
 
-    <div class="mb-0 fill-light is-shadowed" style="z-index: 1000;">
-        <div class="container">
-            <ul class="nav nav-menu">
-                <div class="nav-left">
-                    <ul class="nav-item">
-                        <li class="menu-item">
-                            <div role="button" tabindex="0">File</div>
-                            <ul class="sub-menu">
-                                <li>
-                                    <div role="button" tabindex="0">New map</div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item">
-                            <div role="button" tabindex="0">View</div>
-                            <ul class="sub-menu">
-                                <li>
-                                    <div>
-                                        <input type="checkbox" id="toggle-layer-highlighting" name="toggle-layer-highlighting" class="chk-highlight-current-layer" />
-                                        <label for="toggle-layer-highlighting">Toggle layer highlighting</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item">
-                            <div role="button" tabindex="0">Options</div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="nav-right">
-                    <ul class="nav-item">
-                        <li class="menu-item">
-                            <div role="button" tabindex="0" class="btn-play">
-                                <i class="fa fa-play fa-lg text-green-darken-2 mr-default"></i>
-                                <span>Play</span>
+    <div class="a11y-modal-layer a11y-hidden">
+        <div class="a11y-modal-container">
+            <div class="a11y-modal" id="accessible-demo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+              <div class="a11y-modal-banner">
+                <h1 class="a11y-modal-title" id="modal-title">New map</h1>
+              </div>
+              <div class="a11y-modal-content">
+                  <div class="form-section">
+                      <span class="form-label">Name</span>
+                      <input type="text" class="input-element" />
+                  </div>
+                  <div class="row mb-0">
+                        <div class="column">
+                            <div class="form-section">
+                                <span class="form-label">Map Width</span>
+                                <input type="text" class="input-element" />
                             </div>
-                        </li>
-                    </ul>
-                </div>
-            </ul>
-        </div>
-    </div>
-
-    <ul class="nav nav-menu mb-0 fill-light is-shadowed" style="z-index: 500;">
-        <div class="container">
-            <div class="nav-left"></div>
-            <div class="nav-right">
-                <ul class="nav-item">
-                    <li>
-                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="1" title="Select">
-                            <i class="fa fa-mouse-pointer fa-lg"></i>
                         </div>
-                    </li>
-                    <li>
-                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="2" title="Stamp">
-                            <i class="fa fa-cube fa-lg"></i>
+                        <div class="column">
+                            <div class="form-section">
+                                <span class="form-label">Map Height</span>
+                                <input type="text" class="input-element" />
+                            </div>
                         </div>
-                    </li>
-                    <li>
-                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="3" title="Shape fill">
-                            <i class="fa fa-object-group fa-lg"></i>
+                        <div class="column">
+                            <div class="form-section">
+                                <span class="form-label">Tile Width</span>
+                                <input type="text" class="input-element" />
+                            </div>
                         </div>
-                    </li>
-                    <li>
-                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="4" title="Bucket fill">
-                            <i class="fa fa-flask fa-lg"></i>
+                        <div class="column">
+                            <div class="form-section">
+                                <span class="form-label">Tile Height</span>
+                                <input type="text" class="input-element" />
+                            </div>
                         </div>
-                    </li>
-                    <li>
-                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="5">
-                            <i class="fa fa-object-group fa-lg"></i>
-                        </div>
-                    </li>
-                    <li>
-                        <div role="button" class="btn-toolbar-item" tabindex="0" data-editor-mode="6" title="Eraser">
-                            <i class="fa fa-eraser fa-lg text-red-lighten-2"></i>
-                        </div>
-                    </li>
-                </ul>
+                  </div>
+              </div>
+              <div class="a11y-modal-footer">
+                <button type="button" class="a11y-modal-dismiss">Cancel</button>
+              </div>
             </div>
-        </div>
-    </ul>
-
-    <div class="main" style="height: 100%; flex: 1; display: flex; flex-direction: row;">
-        <div class="editor-left" style="width: 300px;">
-            test
-        </div>
-        <div class="canvas-container" style="background-color: #ccc; display: flex; height: 100%; flex: 1; justify-content: center; align-items: center;">
-            <div style="min-width: 512px; overflow: auto;">
-                <canvas id="editor-canvas" tabindex="-1" width="512" height="512"></canvas>
-            </div>
-        </div>
-        <div class="editor-right">
-
-        </div>
-    </div>
+          </div>
+      </div>
 
     <script>
-        document.querySelector('.btn-play').addEventListener('click', (event) => {
-            alert('test');
-            window.open('http://localhost:9000/play', '_blank');
-        })
+        !function(e){var t={};function s(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,s),o.l=!0,o.exports}s.m=e,s.c=t,s.d=function(e,t,n){s.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},s.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},s.t=function(e,t){if(1&t&&(e=s(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(s.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)s.d(n,o,function(t){return e[t]}.bind(null,o));return n},s.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return s.d(t,"a",t),t},s.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},s.p="",s(s.s=0)}([function(e,t,s){"use strict";s.r(t);var n=function(e,t,s){this.modalLayerClass="a11y-modal-layer",this.hiddenClass="a11y-hidden",this.dismissClass="a11y-modal-dismiss"},o=function(e,t){var s=this;this.modalNode=e,this.dismissNode=this.modalNode.querySelector("."+t.options.dismissClass),this.dismissNode.addEventListener("click",(function(){t.close(s)}))},i=function(e){var t=this;this.instances=[],this.configure=function(e){var s=new o(document.querySelector("#"+e),t),n=s.modalNode.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');return s.firstFocusableElement=n[0],s.lastFocusableElement=n[n.length-1],s.firstFocusTrapElement=document.createElement("div"),s.firstFocusTrapElement.tabIndex=0,s.firstFocusTrapElement.addEventListener("focus",(function(e){s.lastFocusableElement.focus()})),s.lastFocusTrapElement=document.createElement("div"),s.lastFocusTrapElement.tabIndex=0,s.lastFocusTrapElement.addEventListener("focus",(function(e){s.firstFocusableElement.focus()})),s.modalNode.parentNode.insertBefore(s.firstFocusTrapElement,s.modalNode),s.modalNode.parentNode.insertBefore(s.lastFocusTrapElement,s.modalNode.nextSibling),t.instances.push(s),s},this.open=function(e){var s=t.instances.filter((function(t){return t.modalNode.id===e}))[0];s||(s=t.configure(e),t.instances.push(s)),s.modalNode.parentNode.classList.remove(t.options.hiddenClass),t.modalLayer.classList.contains(t.options.hiddenClass)&&t.modalLayer.classList.remove(t.options.hiddenClass),s.firstFocusableElement.focus()},this.close=function(e){var s=t.instances.indexOf(e,0);t.instances.splice(s,1),e.modalNode.parentNode.classList.add(t.options.hiddenClass),s>0&&t.instances[s-1].firstFocusableElement.focus()},this.options=e||new n;var s=new n;this.options.modalLayerClass=this.options.modalLayerClass||s.modalLayerClass,this.options.hiddenClass=this.options.hiddenClass||s.hiddenClass,this.options.dismissClass=this.options.dismissClass||s.dismissClass,this.instances=[],this.modalLayer=document.querySelector("."+this.options.modalLayerClass)};t.default=i;window.addEventListener("DOMContentLoaded",(function(){window.a11yModal=window.a11yModal||new i}))}]);
+    </script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            let modalToggleElems = document.querySelectorAll('.modal-toggle');
+
+            modalToggleElems.forEach((modalToggleElem) => {
+                let modalTarget = modalToggleElem.dataset.target;
+
+                modalToggleElem.addEventListener('click', () => {
+                    window.a11yModal.open(modalTarget)
+                });
+            });
+        });
     </script>
 
     <script src="editor.js"></script>
