@@ -56,12 +56,16 @@
                     color: $color-dark;
                 }
 
+                div[role="button"] {
+                    color: $color-white;
+                }
+
                 .nav-menu.fill-dark & {
                     background-color: black;
                 }
     
                 &:hover {
-                    background-color: darken($color: $color-light, $amount: 5);
+                    background-color: darken($color: #262626, $amount: 5);
                     cursor: pointer;
                 }
             }

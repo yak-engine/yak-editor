@@ -1,3 +1,5 @@
+import Scene from "../../../../yak-engine/src/graphics/scene";
+import Scaffold from "../../../../yak-engine/src/scaffold";
 import { ComponentDecorator } from "../../decorators/component-decorator";
 import EditorRenderer from "../../editor-renderer";
 
@@ -7,10 +9,23 @@ import EditorRenderer from "../../editor-renderer";
 })
 export default class MapEditorComponent {
     editorRenderer: EditorRenderer;
+    isLoading: boolean = true;
+    scene: Scene;
+
+    constructor() {
+        fetch('./bundle/scenes/scene1.json').then((response) => response.json()).then((scene: Scene) => {
+            this.scene = scene;
+
+            this.editorRenderer = new EditorRenderer();
+            this.editorRenderer.currentLayer = this.scene.layers[0];
+    
+            window.requestAnimationFrame((time: number) => this.mainLoop(time));
+        })
+        .finally(() => this.isLoading = false);
+    }
 
     onActivated(): void {
-        this.editorRenderer = new EditorRenderer();
-        window.requestAnimationFrame((time: number) => this.mainLoop(time));
+        console.log('map-editor component activated');
     }
 
     mainLoop(time: number) {

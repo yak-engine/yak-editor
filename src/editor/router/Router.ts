@@ -1,3 +1,5 @@
+import Binding from "../Binding";
+import EditorApplication from "../EditorApplication";
 import TemplateEngine from "../TemplateEngine";
 import Route from "./Route";
 
@@ -30,18 +32,20 @@ export default class Router {
         this.initializeRoutingChange('name', name, params);
     }
 
-    goByUrl = (url: string, params?: any) => {
-        this.initializeRoutingChange('displayUrl', url, params)
+    async goByUrl (url: string, params?: any): Promise<DocumentFragment> {
+        return await this.initializeRoutingChange('displayUrl', url, params);
     }
 
-    initializeRoutingChange(property: string, value: any, params: string) {
+    async initializeRoutingChange(property: string, value: any, params: string, outlet?: HTMLElement): Promise<DocumentFragment> {
         // If we find the route here we have a top level route and need to change the application root html.
         let route = this.routes.find((x: any) => x[property] === value);
 
         if (route) {
-            TemplateEngine.loadTemplate(route.component, null);
             this.finalizeRoutingChange(route, null);
+            return await TemplateEngine.loadTemplate(route.component);
         }
+
+        return null;
     }
 
     finalizeRoutingChange(route: Route, params: any) {

@@ -1,71 +1,37 @@
+import ComponentEngine from "./ComponentEngine";
 import EditorApplication from "./EditorApplication";
-import TemplateEngine from "./TemplateEngine";
 
 export default class Binding {
     templateFragment: DocumentFragment;
     instance: any;
-
-    private markup: string;
+    children: Array<Binding> = new Array();
 
     private expressionTokenRegex: RegExp = /{{(.*?)}}/;
 
-    constructor(component: any, template: string, root: HTMLElement) {
+    constructor(component: any, templateFragment: DocumentFragment) {
+        this.templateFragment = templateFragment;
+
         this.instance = new component();
 
-        let componentRoot = document.createElement('div');
-        componentRoot.innerHTML = template;
-
-        this.templateFragment = document.createDocumentFragment();
-        this.templateFragment.appendChild(componentRoot);
-
         this.queryComponents();
-        this.queryRouterOutlet();
         this.queryBindings();
         this.queryExpressions();
+        this.queryNavigationLinks();
 
-        root.parentElement.replaceChild(this.templateFragment, root);
-
-        if (this.instance.onActivate) {
-            console.log(this.templateFragment);
-            this.instance.onActivate();
+        if (this.instance.onActivated) {
+            this.instance.onActivated();
         }
-
-        // EditorApplication.root.appendChild(this.templateFragment);
     }
 
     queryComponents(): void {
         EditorApplication.components.forEach((component) => {
             this.templateFragment.querySelectorAll(component.prototype.tagName).forEach(async (componentSlot) => {
-                await TemplateEngine.loadTemplate(component, componentSlot);
+                let binding = await ComponentEngine.bootstrap(component, componentSlot);
+                // let templateFragment = await TemplateEngine.loadTemplate(component);
+                // this.children.push(new Binding(component, templateFragment, componentSlot));
+                // this.routerOutlet = componentSlot;
             });
         })
-    }
-
-    queryRouterOutlet(): void {
-               // Only process router outlet if the user has defined a router for their application.
-               if (EditorApplication.router) {
-                let routerOutlet = this.templateFragment.querySelectorAll('router-outlet')[0] as HTMLElement;
-    
-                if ('default' === this.instance.constructor.prototype.tagName) {
-                    if (!routerOutlet) {
-                        throw new Error('Router is not defined for this component please define a router outlet');
-                    }
-    
-                    EditorApplication.router.rootOutletElement = routerOutlet;
-                    let defaultRoute = EditorApplication.router.routes.find(x => x.displayUrl === '');
-                    // this.children.push(new BindingBase(new defaultRoute.component(), routerOutlet));
-                    TemplateEngine.loadTemplate(EditorApplication.defaultRouteComponent, routerOutlet);
-                }
-                else {
-                    // if (routerOutlet) {
-                    //     let bindingBaseRoute: Route = SPApplication.router.routes.find(x => x.tagName === this.proxy.tagName);
-                
-                    //     if (!bindingBaseRoute) {
-                    //         throw new Error(`This current binding context (${this.proxy.tagName}) is not a registered route so <router-outlet> can not be used.`);
-                    //     }
-                    // }
-                }
-            }
     }
 
     queryBindings(): void {
@@ -114,5 +80,19 @@ export default class Binding {
                 textNode.value = textNode.value.replace(this.expressionTokenRegex, defaultValue);
             }
         }
+    }
+
+    private queryNavigationLinks() {
+        let navigationLinks = this.templateFragment.querySelectorAll('[y-ref]');
+
+        navigationLinks.forEach((navigationLink: HTMLElement) => {
+            navigationLink.addEventListener('click', async () => {
+                const navigationState = navigationLink.getAttribute('y-ref');
+                
+                let defaultRoute = EditorApplication.router.routes.find(x => x.displayUrl === '');
+                this.templateFragment = await EditorApplication.router.goByUrl(navigationState);
+                // this.children.push(new Binding(defaultRoute.component, this.templateFragment, this.routerOutlet, this));
+            });
+        })
     }
 }

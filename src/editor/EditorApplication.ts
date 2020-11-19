@@ -1,11 +1,12 @@
 import Binding from "./Binding";
+import ComponentEngine from "./ComponentEngine";
 import DefaultComponent from "./components/default.component";
 import MainMenuComponent from "./components/main-menu/main-menu.component";
 import MapEditorComponent from "./components/map-editor/map-editor.component";
 import OptionsComponent from "./components/options/options.component";
+import VersionComponent from "./components/options/version/version.component";
 import Route from "./router/Route";
 import Router from "./router/Router";
-import TemplateEngine from './TemplateEngine';
 
 export default class EditorApplication {
     public static root: HTMLElement;
@@ -28,18 +29,27 @@ export default class EditorApplication {
             let routes: Array<Route> = [
                 {
                     displayUrl: '',
-                    component: DefaultComponent
+                    component: MapEditorComponent
                 },
                 {
                     displayUrl: '/options',
-                    component: OptionsComponent
+                    component: OptionsComponent,
+                    children: [
+                        {
+                            displayUrl: '',
+                            component: VersionComponent
+                        }
+                    ]
                 }
             ];
 
             EditorApplication.router = new Router(routes);
 
             EditorApplication.root = document.querySelector('#app-root');
-            TemplateEngine.loadTemplate(DefaultComponent, EditorApplication.root);
+
+            ComponentEngine.bootstrap(DefaultComponent, EditorApplication.root).then((binding: Binding) => {
+                EditorApplication.defaultBinding = binding;
+            });
         }
         catch(ex) {
             let errorNode = document.createElement('div');
