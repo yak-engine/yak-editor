@@ -349,3 +349,30 @@ button.active {
 .a11y-hidden {
     display: none;
 }
+
+.tree {
+    ul {
+        padding-left: 15px;
+        padding-top: 5px;
+
+        li {
+            padding-bottom: 5px;
+
+            ul {
+                display: none;
+            }
+
+            &.expanded {
+                ul {
+                    display: inherit;
+                }
+            }
+        }
+    }
+
+    > ul {
+        padding-top: 0;
+        padding-left: 0;
+        display: inherit;
+    }
+}

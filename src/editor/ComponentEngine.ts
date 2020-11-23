@@ -6,6 +6,11 @@ export default class ComponentEngine {
         let templateFragment = await TemplateEngine.loadTemplate(component);
         let binding = new Binding(component, templateFragment);
         domTarget.parentElement.replaceChild(binding.templateFragment, domTarget);
+        
+        if (binding.instance.onContentLoaded) {
+            binding.instance.onContentLoaded();
+        }
+
         return binding;
     }
 

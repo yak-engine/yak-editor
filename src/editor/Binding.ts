@@ -1,3 +1,4 @@
+import { defaultValueSchemable } from "sequelize/types/lib/utils";
 import ComponentEngine from "./ComponentEngine";
 import EditorApplication from "./EditorApplication";
 
@@ -16,6 +17,7 @@ export default class Binding {
         this.queryComponents();
         this.queryBindings();
         this.queryExpressions();
+        this.queryEvents();
         this.queryNavigationLinks();
 
         if (this.instance.onActivated) {
@@ -52,6 +54,29 @@ export default class Binding {
             });
 
             bindableElement.value = defaultValue;
+
+            bindableElement.onkeyup = () => {
+                'test.value' // property on object
+                'sceneName' // string
+
+                // TODO: Actually create an update binding method.
+                let defaultValue2 = null;
+
+                attribute.split('.').forEach((accessor) => {
+                    if (defaultValue2) {
+                        defaultValue2 = defaultValue2[accessor];
+                    }
+                    else {
+                        defaultValue2 = this.instance[accessor];
+                    }
+                });
+
+                let t = 'test.value';
+                this.instance[attribute] = bindableElement.value;
+                // defaultValue2 = bindableElement.value;
+
+                console.log(this.instance);
+            };
         });
     }
 
@@ -80,6 +105,22 @@ export default class Binding {
                 textNode.value = textNode.value.replace(this.expressionTokenRegex, defaultValue);
             }
         }
+    }
+
+    private queryEvents() {
+        const eventElements = this.templateFragment.querySelectorAll('[y-click]');
+
+        eventElements.forEach((eventElement: HTMLElement) => {
+            const clickProperty = eventElement.getAttribute('y-click');
+
+            const parameter = clickProperty.substring(clickProperty.lastIndexOf("(") + 1, clickProperty.lastIndexOf(")"));
+            const functionDeclaration = clickProperty.split('(')[0];
+
+            eventElement.addEventListener('click', () => {
+                // TODO: Figure out how to add this this[parameter] back into the line below.
+                Function(this.instance[functionDeclaration]());
+            });
+        });
     }
 
     private queryNavigationLinks() {

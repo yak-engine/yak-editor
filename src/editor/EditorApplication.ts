@@ -3,8 +3,10 @@ import ComponentEngine from "./ComponentEngine";
 import DefaultComponent from "./components/default.component";
 import MainMenuComponent from "./components/main-menu/main-menu.component";
 import MapEditorComponent from "./components/map-editor/map-editor.component";
-import OptionsComponent from "./components/options/options.component";
+import NewSceneComponent from "./components/new-scene/new-scene.component";
+// import OptionsComponent from "./components/options/options.component";
 import VersionComponent from "./components/options/version/version.component";
+import SceneHierarchyComponent from "./components/scene-hierarchy/scene-hierarchy.component";
 import Route from "./router/Route";
 import Router from "./router/Router";
 
@@ -15,7 +17,9 @@ export default class EditorApplication {
         DefaultComponent,
         MainMenuComponent,
         MapEditorComponent,
-        OptionsComponent
+        // OptionsComponent,
+        SceneHierarchyComponent,
+        NewSceneComponent
     ];
 
     public static defaultRouteComponent: any = MapEditorComponent;
@@ -30,17 +34,17 @@ export default class EditorApplication {
                 {
                     displayUrl: '',
                     component: MapEditorComponent
-                },
-                {
-                    displayUrl: '/options',
-                    component: OptionsComponent,
-                    children: [
-                        {
-                            displayUrl: '',
-                            component: VersionComponent
-                        }
-                    ]
                 }
+                // {
+                //     displayUrl: '/options',
+                //     component: OptionsComponent,
+                //     children: [
+                //         {
+                //             displayUrl: '',
+                //             component: VersionComponent
+                //         }
+                //     ]
+                // }
             ];
 
             EditorApplication.router = new Router(routes);

@@ -1,5 +1,4 @@
 import Scene from "../../../../yak-engine/src/graphics/scene";
-import Scaffold from "../../../../yak-engine/src/scaffold";
 import { ComponentDecorator } from "../../decorators/component-decorator";
 import EditorRenderer from "../../editor-renderer";
 

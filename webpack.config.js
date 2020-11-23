@@ -45,6 +45,10 @@ module.exports = {
           to: '',
         },
         {
+          from: './src/common/tree.js',
+          to: '',
+        },
+        {
           from: './src/editor/**/*.html',
           to: '',
         },
