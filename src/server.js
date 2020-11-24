@@ -45,7 +45,9 @@ app.post('/scene/add', function(req, res) {
 
 // Get specific scene.
 app.get('/scene/get/:sceneName', function(req, res) {
+    console.log(req.params.sceneName);
     const doc = yaml.safeLoad(fs.readFileSync(`./dist/bundle/scenes/${req.params.sceneName}.yaml`, 'utf8'));
+    console.log(doc);
     res.json(doc);
 });
 

@@ -26,7 +26,17 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
-@Component
+import MainMenu from './MainMenu.vue';
+import MapEditor from './MapEditor.vue';
+import NewScene from './NewScene.vue';
+
+@Component({
+  components: {
+    MainMenu,
+    MapEditor,
+    NewScene
+  }
+})
 export default class Default extends Vue {
 
   @Prop() private msg!: string;
@@ -34,13 +44,13 @@ export default class Default extends Vue {
   mounted(): void {
     // TODO: Fix this. This is an issue with the order in which components get added to the DOM. Add way to query template fragment.
     setTimeout(() => {
-        let modalToggleElems = document.querySelectorAll('.modal-toggle');
+        // let modalToggleElems = document.querySelectorAll('.modal-toggle');
 
-        console.log(modalToggleElems);
+        // console.log(modalToggleElems);
 
-        (window as any).a11yModal.modalLayer = document.querySelector(`.${(window as any).a11yModal.options.modalLayerClass}`);
+        // (window as any).a11yModal.modalLayer = document.querySelector(`.${(window as any).a11yModal.options.modalLayerClass}`);
 
-        console.log((window as any).a11yModal.modalLayer);
+        // console.log((window as any).a11yModal.modalLayer);
 
         // modalToggleElems.forEach((modalToggleElem: HTMLElement) => {
         //     let modalTarget = modalToggleElem.dataset.target;

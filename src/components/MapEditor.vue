@@ -119,10 +119,16 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 
+import SceneHierarchy from './SceneHierarchy.vue';
+import SceneListing from './SceneListing.vue';
+
 @Component({
-  components: {},
+  components: {
+    SceneHierarchy,
+    SceneListing
+  }
 })
-export default class HelloWorld extends Vue {
+export default class MapEditor extends Vue {
   @Prop() private msg!: string;
 
   // editorRenderer: EditorRenderer;

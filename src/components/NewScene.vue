@@ -27,15 +27,15 @@ export default class NewScene extends Vue {
             name: this.sceneName
         };
 
-        fetch('/scene/add', {
-            method: 'POST',
-            body: JSON.stringify(scene),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }).then((response) => {
-            console.log(response);
-        });
+        // fetch('/scene/add', {
+        //     method: 'POST',
+        //     body: JSON.stringify(scene),
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        // }).then((response) => {
+        //     console.log(response);
+        // });
     }
 }
 </script>

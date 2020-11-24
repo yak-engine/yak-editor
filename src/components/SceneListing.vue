@@ -2,11 +2,11 @@
 
 <template>
   <div class="default-component">
-<div class="component scene-listing">
-    <div y-for="scene in scenes">
-        {{scene}}
+    <div class="component scene-listing">
+      <div y-for="scene in scenes">
+        <!-- {{ scene }} -->
+      </div>
     </div>
-</div>
   </div>
 </template>
 
@@ -18,17 +18,20 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 })
 export default class SceneListing extends Vue {
   @Prop() private msg!: string;
-    scenes: Array<string> = new Array();
 
-    /**
-     * Called after the fragment has been added to the DOM. You can do standard DOM manipulation now.
-     */
-    onContentLoaded(): void {
-        fetch('/scene/list').then((response) => response.json()).then((scenes) => {
-            console.log(scenes);
-            this.scenes = scenes;
-        });
-    }
+  get scenes(): Array<any> {
+    return new Array();
+  }
+
+  /**
+   * Called after the fragment has been added to the DOM. You can do standard DOM manipulation now.
+   */
+  onContentLoaded(): void {
+    // fetch('/scene/list').then((response) => response.json()).then((scenes) => {
+    //     console.log(scenes);
+    //     this.scenes = scenes;
+    // });
+  }
 }
 </script>
 

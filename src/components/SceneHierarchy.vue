@@ -16,10 +16,7 @@ export default class SceneHierarchy extends Vue {
   @Prop() private msg!: string;
 
     mounted(): void {
-        fetch('/scene/get/scene1').then((response) => response.json()).then((scene) => {
-            console.log(scene);
-            (window as any).tree.generate(scene.entities);
-        })
+        fetch('http://localhost:9000/scene/get/default-scene', { mode: 'no-cors' }).then((response) => console.log(response));
     }
 }
 </script>
