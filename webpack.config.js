@@ -1,6 +1,8 @@
 const path = require('path');
 let CopyWebpackPlugin  = require('copy-webpack-plugin');
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+
 module.exports = {
   entry: './src/editor/startup.ts',
   mode: 'development',
@@ -19,13 +21,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/,
-        use: 'html-loader',
-        exclude: /node_modules/
+        test: /\.vue$/,
+        loader: 'vue-loader'
       },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.html$/,
+        use: 'html-loader',
         exclude: /node_modules/
       }
     ],
@@ -38,6 +44,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
+    new VueLoaderPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {

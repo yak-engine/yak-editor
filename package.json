@@ -1,38 +1,26 @@
 {
-  "name": "yak-editor",
-  "version": "1.0.0",
-  "description": "",
-  "main": "webpack.config.js",
+  "name": "yak-editor2",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "watch": "webpack --watch",
-    "start": "concurrently \"webpack-dev-server\" \"webpack --watch\" \"gulp sass:watch\" \"node ./dist/server.js\""
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^5.3.0",
-    "copy-webpack-plugin": "^6.0.3",
-    "css-loader": "^5.0.1",
-    "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-sass": "^4.1.0",
-    "gulp-sass-glob": "^1.1.0",
-    "sass-loader": "^10.1.0",
-    "style-loader": "^2.0.0",
-    "ts-loader": "^8.0.0",
-    "typescript": "^3.9.6",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-serve": "^3.2.0",
-    "webpack-stream": "^6.1.1"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "js-yaml": "^3.14.0",
-    "sequelize": "^6.3.5",
-    "sqlite3": "^5.0.0"
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.2",
+    "vue-router": "^3.2.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.0",
+    "@vue/cli-plugin-typescript": "^4.5.0",
+    "@vue/cli-service": "^4.5.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2",
+    "typescript": "~3.9.3",
+    "vue-template-compiler": "^2.6.11"
   }
 }

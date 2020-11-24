@@ -57,6 +57,7 @@
                 }
 
                 div[role="button"] {
+                    // TODO: Add specific Sass variable for this color.
                     color: $color-white;
                 }
 
@@ -67,6 +68,16 @@
                 &:hover {
                     background-color: darken($color: #262626, $amount: 5);
                     cursor: pointer;
+                }
+
+                .sub-menu {
+                    background-color: $color-dark;
+
+                    > li {
+                        &:hover {
+                            background-color: $color-black;
+                        }
+                    }
                 }
             }
         }

@@ -1,16 +1,29 @@
-# Yak Engine
+# yak-editor2
 
-A typescript game engine.
+## Project setup
+```
+npm install
+```
 
-## Features
-- [ ] Physics
-- [ ] Collision detection
-- [ ] Input
-- [ ] Audio
-- [ ] Auto scrolling
-- [ ] Scene management
-- [ ] Sprites
-- [ ] Tilesets
-- [ ] Animations
-- [ ] User interface
-- [ ] Pathfinding
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Run your tests
+```
+npm run test
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

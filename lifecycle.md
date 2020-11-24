@@ -1,3 +1,0 @@
-- onAwake
-- onRegisterOverlays
-- onUpdate (repeating)
