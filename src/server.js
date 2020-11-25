@@ -8,6 +8,12 @@ const app = express();
 app.use(express.static('dist'));
 app.use(express.json())
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
@@ -25,7 +31,9 @@ app.get("/bundle/generate", function (req, res) {
     res.send("Bundle generate");
 });
 
-app.post('/scene/add', function(req, res) {
+
+
+app.post('/api/scene/add', function(req, res) {
     // Load default sceen and update name.
     const scenePath = './dist/bundle/scenes/default-scene.yaml';
 
@@ -44,26 +52,25 @@ app.post('/scene/add', function(req, res) {
 });
 
 // Get specific scene.
-app.get('/scene/get/:sceneName', function(req, res) {
-    console.log(req.params.sceneName);
+app.get('/api/scene/get/:sceneName', function(req, res) {
     const doc = yaml.safeLoad(fs.readFileSync(`./dist/bundle/scenes/${req.params.sceneName}.yaml`, 'utf8'));
-    console.log(doc);
     res.json(doc);
 });
 
 // Save
-app.post('/scene/save', function(req, res) {
+app.post('/api/scene/save', function(req, res) {
+    // TODO: Actually implement this code.
     const doc = yaml.safeLoad(fs.readFileSync(`./dist/bundle/scenes/${req.body.name}.yaml`, 'utf8'));
     res.json(doc);
 });
 
 // Delete
-app.get('/scene/delete/:sceneName', function(req, res) {
+app.get('/api/scene/delete/:sceneName', function(req, res) {
     fs.unlinkSync(`./dist/bundle/scenes/${req.params.sceneName}.yaml`)
 });
 
 // List all
-app.get('/scene/list', function(req, res) {
+app.get('/api/scene/list', function(req, res) {
     res.json(fs.readdirSync(`./dist/bundle/scenes/`));
 });
 

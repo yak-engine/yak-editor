@@ -1,7 +1,7 @@
 
 
 <template>
-  <div class="default-component">
+  <div class="component default-component">
     <div class="component scene-listing">
       <div y-for="scene in scenes">
         <!-- {{ scene }} -->

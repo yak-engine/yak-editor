@@ -13,7 +13,12 @@ import Default from './components/Default.vue';
     Default,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  constructor() {
+    super();
+    console.log(process.env.VUE_APP_API_BASE_URL);
+  }
+}
 </script>
 
 <style lang="scss">

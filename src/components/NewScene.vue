@@ -1,5 +1,5 @@
 <template>
-  <div class="default-component">
+  <div class="component default-component">
 <div class="component new-scene-component">
     <div class="form-section">
         <span class="form-label" for="scene-name">Name</span>

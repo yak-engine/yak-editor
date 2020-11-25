@@ -1,7 +1,8 @@
 <template>
   <div class="default-component">
+    <play></play>
     <div class="mb-0 fill-dark text-light is-shadowed" style="z-index: 1000; border-bottom: 1px solid black;">
-        <div class="container">
+        <div class="">
             <ul class="nav nav-menu">
                 <div class="nav-left">
                     <ul class="nav-item">
@@ -35,9 +36,9 @@
                 <div class="nav-right">
                     <ul class="nav-item">
                         <li class="menu-item">
-                            <div role="button" tabindex="0" class="btn-play" y-click="play()">
-                                <i class="fa fa-play fa-lg text-green-darken-2 mr-default"></i>
-                                <span>Play</span>
+                            <div role="button" tabindex="0" class="btn-play">
+                                <i class="fa fa-play text-green-darken-2 mr-default"></i>
+                                <span class="text-white">PLAY</span>
                             </div>
                         </li>
                     </ul>
@@ -50,10 +51,11 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import Play from './Play.vue';
 
 @Component({
     components: {
-        
+        Play
     }
 })
 export default class MainMenu extends Vue {

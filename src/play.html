@@ -1,0 +1,1230 @@
+<html>
+    <head>
+        <title>Game Preview</title>
+
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="engine-canvas"></canvas>
+
+        <script>
+            /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./demo.ts");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./demo.ts":
+/*!*****************!*\
+  !*** ./demo.ts ***!
+  \*****************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var application_1 = __importDefault(__webpack_require__(/*! ./src/application */ "./src/application.ts"));
+var Demo = /** @class */ (function (_super) {
+    __extends(Demo, _super);
+    function Demo() {
+        var _this = _super.call(this) || this;
+        _this.start();
+        return _this;
+    }
+    return Demo;
+}(application_1.default));
+exports.default = Demo;
+var demo = new Demo();
+
+
+/***/ }),
+
+/***/ "./src/application.ts":
+/*!****************************!*\
+  !*** ./src/application.ts ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var scaffold_1 = __importDefault(__webpack_require__(/*! ./scaffold */ "./src/scaffold.ts"));
+var graphics_1 = __importDefault(__webpack_require__(/*! ./graphics/graphics */ "./src/graphics/graphics.ts"));
+var time_1 = __importDefault(__webpack_require__(/*! ./time */ "./src/time.ts"));
+var scene_manager_1 = __importDefault(__webpack_require__(/*! ./scene-manager */ "./src/scene-manager.ts"));
+var logger_1 = __webpack_require__(/*! ./logging/logger */ "./src/logging/logger.ts");
+var tileset_1 = __importDefault(__webpack_require__(/*! ./graphics/tileset */ "./src/graphics/tileset.ts"));
+var Application = /** @class */ (function () {
+    function Application() {
+        /**
+         * Contains basic configurable fields that are set before the application begins.
+         */
+        this.configuration = new scaffold_1.default();
+        /**
+         * Contains the rendering functionality from the main loop.
+         */
+        this.graphics = new graphics_1.default();
+    }
+    /**
+     * Actually begins the game instance. Processes the configuration.
+     *
+     * @author NSSure
+     * @since 11/8/2020
+     */
+    Application.prototype.start = function () {
+        var _this = this;
+        fetch('./bundle/scaffold.json').then(function (response) { return response.json(); }).then(function (scaffold) { return __awaiter(_this, void 0, void 0, function () {
+            var _a, loadedTilesets;
+            var _this = this;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this.graphics;
+                        return [4 /*yield*/, scene_manager_1.default.load(scaffold.scenes[0])];
+                    case 1:
+                        _a.scene = _b.sent();
+                        logger_1.Logger.data(this.graphics.scene);
+                        loadedTilesets = 0;
+                        this.graphics.scene.tilesets.forEach(function (tilesetPath) {
+                            var image = new Image();
+                            image.onload = function () {
+                                _this.graphics.tilesets.push(new tileset_1.default(image));
+                                loadedTilesets++;
+                                if (loadedTilesets === _this.graphics.scene.tilesets.length) {
+                                    window.requestAnimationFrame(function (time) { return _this.mainLoop(time); });
+                                }
+                            };
+                            image.onerror = function () {
+                                logger_1.Logger.data('failed to load tileset');
+                            };
+                            image.src = tilesetPath;
+                        });
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    /**
+     * The main loop contains all the rendering logic will be called from within this function.
+     *
+     * @param time The time between the animation frames.
+     *
+     * @author NSSure
+     * @since 11/8/2020
+     */
+    Application.prototype.mainLoop = function (time) {
+        var _this = this;
+        window.requestAnimationFrame(function (time) { return _this.mainLoop(time); });
+        time_1.default.calculateDeltaTime(time);
+        this.graphics.draw(time);
+        this.graphics.render();
+    };
+    return Application;
+}());
+exports.default = Application;
+
+
+/***/ }),
+
+/***/ "./src/configuration.ts":
+/*!******************************!*\
+  !*** ./src/configuration.ts ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Contains configuration options for the application instance.
+ *
+ * @author NSSure
+ * @since 11/8/2020
+ */
+var Configuration = /** @class */ (function () {
+    function Configuration() {
+    }
+    /**
+     * Default size of the squares of the canvas.
+     */
+    Configuration.gridSquareSize = 32;
+    /**
+     * The background fill that immediately fill the canvas area after the clearCanvas method to called in the draw method.
+     */
+    Configuration.canvasFill = '#09161D';
+    return Configuration;
+}());
+exports.default = Configuration;
+
+
+/***/ }),
+
+/***/ "./src/constants.ts":
+/*!**************************!*\
+  !*** ./src/constants.ts ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.uiConstants = void 0;
+var uiConstants = {
+    entityName: {
+        button: 'Button',
+        panel: 'Panel',
+        text: 'Text',
+        thickness: 'Thickness'
+    }
+};
+exports.uiConstants = uiConstants;
+
+
+/***/ }),
+
+/***/ "./src/entity.ts":
+/*!***********************!*\
+  !*** ./src/entity.ts ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var transform_1 = __importDefault(__webpack_require__(/*! ./primitives/transform */ "./src/primitives/transform.ts"));
+/**
+ * Base object class used for sprites, colliders, primitives, etc. Contains
+ * shared code common across most classes.
+ *
+ * @author NSSure
+ * @since 11/8/2020
+ */
+var Entity = /** @class */ (function () {
+    function Entity() {
+        /**
+         * Generates a unique 12 character ID for each entity.
+         */
+        this.id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 12);
+        /**
+         * Determines if the entity should be rendered.
+         */
+        this.isEnabled = true;
+        /**
+         * Contains the position data for the entity. Includes the x and y coordinates as
+         * well as the width and height of the entity.
+         */
+        this.transform = new transform_1.default(0, 0, 0, 0);
+    }
+    return Entity;
+}());
+exports.default = Entity;
+
+
+/***/ }),
+
+/***/ "./src/graphics/camera.ts":
+/*!********************************!*\
+  !*** ./src/graphics/camera.ts ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Camera = /** @class */ (function () {
+    function Camera() {
+    }
+    return Camera;
+}());
+exports.default = Camera;
+
+
+/***/ }),
+
+/***/ "./src/graphics/fragments.ts":
+/*!***********************************!*\
+  !*** ./src/graphics/fragments.ts ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Contains the fragments to be rendered to the canvas on each iteration
+ * of the game loop.
+ *
+ * @author NSSure
+ * @since 11/9/2020
+ */
+var Fragments = /** @class */ (function () {
+    function Fragments() {
+        this.uiFragments = new Array();
+        this.primitiveFragments = new Array();
+        this.spriteFragments = new Array();
+        this.editorFragments = new Array();
+    }
+    return Fragments;
+}());
+exports.default = Fragments;
+
+
+/***/ }),
+
+/***/ "./src/graphics/graphics.ts":
+/*!**********************************!*\
+  !*** ./src/graphics/graphics.ts ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var current_viewport_grid_square_1 = __importDefault(__webpack_require__(/*! ../helpers/current-viewport-grid-square */ "./src/helpers/current-viewport-grid-square.ts"));
+var is_transform_empty_1 = __importDefault(__webpack_require__(/*! ../helpers/is-transform-empty */ "./src/helpers/is-transform-empty.ts"));
+var logger_1 = __webpack_require__(/*! ../logging/logger */ "./src/logging/logger.ts");
+var Point_1 = __importDefault(__webpack_require__(/*! ../primitives/Point */ "./src/primitives/Point.ts"));
+var transform_1 = __importDefault(__webpack_require__(/*! ../primitives/transform */ "./src/primitives/transform.ts"));
+var state_manager_1 = __importDefault(__webpack_require__(/*! ../state/state-manager */ "./src/state/state-manager.ts"));
+var ui_fragments_renderer_1 = __importDefault(__webpack_require__(/*! ../ui/ui-fragments-renderer */ "./src/ui/ui-fragments-renderer.ts"));
+var fragments_1 = __importDefault(__webpack_require__(/*! ./fragments */ "./src/graphics/fragments.ts"));
+var sprite_1 = __importDefault(__webpack_require__(/*! ./sprite */ "./src/graphics/sprite.ts"));
+var sprite_renderer_1 = __importDefault(__webpack_require__(/*! ./sprite-renderer */ "./src/graphics/sprite-renderer.ts"));
+var configuration_1 = __importDefault(__webpack_require__(/*! ../configuration */ "./src/configuration.ts"));
+var camera_1 = __importDefault(__webpack_require__(/*! ./camera */ "./src/graphics/camera.ts"));
+var input_1 = __importDefault(__webpack_require__(/*! ./input */ "./src/graphics/input.ts"));
+var Graphics = /** @class */ (function () {
+    /**
+     * Default constructor. Queries the canvas together with the canvas context
+     * and bootstraps the canvas events.
+     */
+    function Graphics() {
+        var _this = this;
+        /**
+         * The canvas located within the default index.html document.
+         */
+        this.engineCanvas = document.querySelector('#engine-canvas');
+        /**
+         * The 2D rendering context for the default canvas.
+         */
+        this.context = this.engineCanvas.getContext('2d');
+        /**
+         *
+         */
+        this.layers = new Array();
+        /**
+         * The renderer that handle drawing the UI fragments to the given canvas context.
+         */
+        this.uiFragmentsRender = new ui_fragments_renderer_1.default(this);
+        /**
+         *
+         */
+        this.spriteRenderer = new sprite_renderer_1.default(this);
+        /**
+         *
+         */
+        this.fragments = new fragments_1.default();
+        /**
+         * The current position of the mouse in relation to the canvas. NOT the document.
+         */
+        this.mousePosition = new Point_1.default(0, 0);
+        /**
+         * The last position of the mouse within the canvas.
+         */
+        this.lastMousePosition = new Point_1.default(0, 0);
+        /**
+         * Flag to determine if the mouse is down (specifcally left mouse clicks).
+         */
+        this.isMouseDown = false;
+        /**
+         * Flag to determine if the canvas has selection mode enabled.
+         */
+        this.isSelectionMode = false;
+        /**
+         * The transform of the current selection. If selection mode is off this
+         * will be an empty transform.
+         */
+        this.selectionTransform = new transform_1.default(0, 0, 0, 0);
+        this.tilesets = new Array();
+        this.camera = new camera_1.default();
+        this.input = new input_1.default();
+        this.camera.viewport = new transform_1.default(0, 0, 512, 512);
+        this.camera.max = new Point_1.default(64 * 32 - 512, 64 * 32 - 512);
+        // Ensure we resize the canvas here.
+        this.resizeCanvas();
+        this.engineCanvas.addEventListener('mousedown', function (event) { return _this.onCanvasMouseDown(event); });
+        this.engineCanvas.addEventListener('mouseup', function (event) { return _this.onCanvasMouseUp(event); });
+        this.engineCanvas.addEventListener('mousemove', function (event) { return _this.onCanvasMouseMove(event); });
+    }
+    /**
+     * The main draw method called from within the gameLoop function located in the Game.ts class.
+     * This handles resizing the canvas and rendering primitives, sprites, and shapes to the canvas.
+     *
+     * @author NSSure
+     * @since 11/8/2020
+     */
+    Graphics.prototype.draw = function (deltaTime) {
+        if (this.isMouseDown) {
+            // move camera
+            this.camera.viewport.x += 1 * 256 * deltaTime;
+            this.camera.viewport.y += 1 * 256 * deltaTime;
+            // clamp values
+            this.camera.viewport.x = Math.max(0, Math.min(this.camera.viewport.x, this.camera.max.x));
+            this.camera.viewport.y = Math.max(0, Math.min(this.camera.viewport.y, this.camera.max.y));
+            logger_1.Logger.data(deltaTime);
+        }
+    };
+    Graphics.prototype.render = function () {
+        this.clearCanvas();
+        this.fillCanvas();
+        this.spriteRenderer.run();
+        this.uiFragmentsRender.run();
+        this.resizeCanvas();
+    };
+    /**
+     * Clears the canvas for the next draw call.
+     *
+     * @author NSSure
+     * @since 11/8/2020
+     */
+    Graphics.prototype.clearCanvas = function () {
+        this.context.clearRect(0, 0, this.getCanvasWidth(), this.getCanvasHeight());
+    };
+    Graphics.prototype.fillCanvas = function () {
+        this.context.fillStyle = configuration_1.default.canvasFill;
+        this.context.fillRect(0, 0, this.getCanvasWidth(), this.getCanvasHeight());
+    };
+    /**
+     * Resizes the canvas canvas to fit the dimensions of the viewport.
+     *
+     * @author NSSure
+     * @since 11/8/2020
+     */
+    Graphics.prototype.resizeCanvas = function () {
+        if (this.getCanvasWidth() !== window.innerWidth || this.getCanvasHeight() !== window.innerHeight) {
+            this.setCanvasWidth(window.innerWidth);
+            this.setCanvasHeight(window.innerHeight);
+        }
+    };
+    Graphics.prototype.getCanvasHeight = function () {
+        return this.engineCanvas.height;
+    };
+    Graphics.prototype.getCanvasWidth = function () {
+        return this.engineCanvas.width;
+    };
+    Graphics.prototype.setCanvasHeight = function (height) {
+        this.engineCanvas.height = height;
+    };
+    Graphics.prototype.setCanvasWidth = function (width) {
+        this.engineCanvas.width = width;
+    };
+    Graphics.prototype.toggleSelectionMode = function (state) {
+        this.isSelectionMode = state;
+        this.selectionTransform = transform_1.default.empty;
+    };
+    Graphics.prototype.onCanvasMouseDown = function (event) {
+        if (event.button === 0) {
+            this.isMouseDown = true;
+            this.uiFragmentsRender.isHoveredFragmentClicked(this.mousePosition);
+        }
+    };
+    Graphics.prototype.onCanvasMouseUp = function (event) {
+        if (!is_transform_empty_1.default(this.selectionTransform)) {
+            var spriteTemplate = state_manager_1.default.get('pending-sprite-image');
+            // If there is a pending sprite auto fill the selection.
+            if (spriteTemplate) {
+                var rows = this.selectionTransform.height / configuration_1.default.gridSquareSize;
+                var columns = this.selectionTransform.width / configuration_1.default.gridSquareSize;
+                for (var row = 0; row < rows; row++) {
+                    for (var column = 0; column < columns; column++) {
+                        var spriteInstance = new sprite_1.default();
+                        spriteInstance.transform.x = (column * configuration_1.default.gridSquareSize) + this.selectionTransform.x;
+                        spriteInstance.transform.y = (row * configuration_1.default.gridSquareSize) + this.selectionTransform.y;
+                        spriteInstance.transform.width = configuration_1.default.gridSquareSize;
+                        spriteInstance.transform.height = configuration_1.default.gridSquareSize;
+                        // spriteInstance.tilesetTransform = spriteTemplate.tilesetTransform;
+                        this.fragments.spriteFragments.push(spriteInstance);
+                    }
+                }
+                logger_1.Logger.data(this.fragments.spriteFragments);
+            }
+            else {
+                logger_1.Logger.info('we hit on mouse up with a non empty transform');
+                logger_1.Logger.data(this.selectionTransform);
+                if (this.isSelectionMode) {
+                    // this.openContextMenu(new Point(this.mousePosition.x, this.mousePosition.y));
+                }
+            }
+        }
+        this.isMouseDown = false;
+    };
+    Graphics.prototype.onCanvasMouseMove = function (event) {
+        this.mousePosition = new Point_1.default(event.offsetX, event.offsetY);
+        this.gridCoordinates = current_viewport_grid_square_1.default(this.mousePosition);
+        if (is_transform_empty_1.default(this.selectionTransform)) {
+            this.selectionTransform = new transform_1.default(this.gridCoordinates.x * configuration_1.default.gridSquareSize, this.gridCoordinates.y * configuration_1.default.gridSquareSize, 0, 0);
+        }
+        else {
+            this.selectionTransform.width = ((this.gridCoordinates.x * configuration_1.default.gridSquareSize) - this.selectionTransform.x) + configuration_1.default.gridSquareSize;
+            this.selectionTransform.height = ((this.gridCoordinates.y * configuration_1.default.gridSquareSize) - this.selectionTransform.y) + configuration_1.default.gridSquareSize;
+        }
+    };
+    return Graphics;
+}());
+exports.default = Graphics;
+
+
+/***/ }),
+
+/***/ "./src/graphics/input.ts":
+/*!*******************************!*\
+  !*** ./src/graphics/input.ts ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Input = /** @class */ (function () {
+    function Input() {
+        var _this = this;
+        this.keys = new Map();
+        window.addEventListener('keydown', function (event) { return _this.onKeyDown(event); });
+        window.addEventListener('keyup', function (event) { return _this.onKeyDown(event); });
+    }
+    Input.prototype.onKeyDown = function (event) {
+        if (this.keys.has(event.key)) {
+            this.keys.set(event.key, true);
+        }
+    };
+    Input.prototype.onKeyUp = function (event) {
+        if (this.keys.has(event.key)) {
+            this.keys.set(event.key, false);
+        }
+    };
+    return Input;
+}());
+exports.default = Input;
+
+
+/***/ }),
+
+/***/ "./src/graphics/sprite-renderer.ts":
+/*!*****************************************!*\
+  !*** ./src/graphics/sprite-renderer.ts ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var SpriteRenderer = /** @class */ (function () {
+    function SpriteRenderer(canvas) {
+        this.tileset = new Image();
+        this.graphics = canvas;
+    }
+    SpriteRenderer.prototype.run = function () {
+        this.drawLayers();
+        this.graphics.context.fillStyle = 'white';
+        this.graphics.context.fillRect(0, 0, 32, 32);
+    };
+    SpriteRenderer.prototype.drawLayers = function () {
+        var _this = this;
+        this.graphics.scene.layers.forEach(function (layer) {
+            if (layer.enabled) {
+                var startColumn = Math.floor(_this.graphics.camera.viewport.x / _this.graphics.scene.spriteSize);
+                var endColumn = startColumn + (_this.graphics.camera.viewport.width / _this.graphics.scene.spriteSize);
+                var startRow = Math.floor(_this.graphics.camera.viewport.y / _this.graphics.scene.spriteSize);
+                var endRow = startRow + (_this.graphics.camera.viewport.height / _this.graphics.scene.spriteSize);
+                var offsetX = -_this.graphics.camera.viewport.x + startColumn * _this.graphics.scene.spriteSize;
+                var offsetY = -_this.graphics.camera.viewport.y + startRow * _this.graphics.scene.spriteSize;
+                for (var column = startColumn; column < endColumn; column++) { //this loops over the columns
+                    for (var row = startRow; row < endRow; row++) { //this loops over the rows
+                        var sprite = layer.sprites[row * _this.graphics.scene.columns + column];
+                        var x = (column - startColumn) * _this.graphics.scene.spriteSize + offsetX;
+                        var y = (row - startColumn) * _this.graphics.scene.spriteSize + offsetY;
+                        _this.graphics.context.drawImage(_this.graphics.tilesets[layer.tileset].image, sprite * _this.graphics.scene.spriteSize, 0, _this.graphics.scene.spriteSize, _this.graphics.scene.spriteSize, Math.round(x), Math.round(y), _this.graphics.scene.spriteSize, _this.graphics.scene.spriteSize);
+                    }
+                }
+            }
+        });
+    };
+    return SpriteRenderer;
+}());
+exports.default = SpriteRenderer;
+
+
+/***/ }),
+
+/***/ "./src/graphics/sprite.ts":
+/*!********************************!*\
+  !*** ./src/graphics/sprite.ts ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var entity_1 = __importDefault(__webpack_require__(/*! ../entity */ "./src/entity.ts"));
+var transform_1 = __importDefault(__webpack_require__(/*! ../primitives/transform */ "./src/primitives/transform.ts"));
+var Sprite = /** @class */ (function (_super) {
+    __extends(Sprite, _super);
+    function Sprite() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.transform = transform_1.default.empty;
+        _this.tilesetTransform = transform_1.default.empty;
+        return _this;
+    }
+    return Sprite;
+}(entity_1.default));
+exports.default = Sprite;
+
+
+/***/ }),
+
+/***/ "./src/graphics/tileset.ts":
+/*!*********************************!*\
+  !*** ./src/graphics/tileset.ts ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Tileset = /** @class */ (function () {
+    function Tileset(image) {
+        this.image = image;
+    }
+    return Tileset;
+}());
+exports.default = Tileset;
+
+
+/***/ }),
+
+/***/ "./src/helpers/current-viewport-grid-square.ts":
+/*!*****************************************************!*\
+  !*** ./src/helpers/current-viewport-grid-square.ts ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var Point_1 = __importDefault(__webpack_require__(/*! ../primitives/Point */ "./src/primitives/Point.ts"));
+var configuration_1 = __importDefault(__webpack_require__(/*! ../configuration */ "./src/configuration.ts"));
+function currentViewportGridCoordinates(mousePosition) {
+    var gridCoordinates = new Point_1.default(0, 0);
+    gridCoordinates.x = Math.floor(mousePosition.x / configuration_1.default.gridSquareSize);
+    gridCoordinates.y = Math.floor(mousePosition.y / configuration_1.default.gridSquareSize);
+    return gridCoordinates;
+}
+exports.default = currentViewportGridCoordinates;
+
+
+/***/ }),
+
+/***/ "./src/helpers/is-coordinate-contained.ts":
+/*!************************************************!*\
+  !*** ./src/helpers/is-coordinate-contained.ts ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Determines if the given x/y coordinate is contained with the given dimensions. Think
+ * if a mouse is hovering over a button.
+ *
+ * @author NSSure
+ * @since 11/9/2020
+ *
+ * @param point The point that needs to be checked against the given container dimensions.
+ * @param containerOrigin The x and y coordinates of container.
+ * @param containerWidth The width of the container.
+ * @param containerHeight The height of the container.
+ */
+function isCoordinateContained(point, containerTransform) {
+    if (point.x >= containerTransform.x && (point.x <= (containerTransform.x + containerTransform.width))) {
+        if (point.y >= containerTransform.y && (point.y <= (containerTransform.y + containerTransform.height))) {
+            return true;
+        }
+    }
+    return false;
+}
+exports.default = isCoordinateContained;
+
+
+/***/ }),
+
+/***/ "./src/helpers/is-transform-empty.ts":
+/*!*******************************************!*\
+  !*** ./src/helpers/is-transform-empty.ts ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Determines if a given transform object is empty. Meaning the x, y, width, and height
+ * values are all zero.
+ *
+ * @param transform The transform to check if it is empty.
+ *
+ * @author NSSure
+ * @since 11/12/2020
+ */
+function isTransformEmpty(transform) {
+    return transform.x === 0 && transform.y === 0 && transform.width === 0 && transform.height === 0;
+}
+exports.default = isTransformEmpty;
+
+
+/***/ }),
+
+/***/ "./src/logging/logger.ts":
+/*!*******************************!*\
+  !*** ./src/logging/logger.ts ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Logger = void 0;
+var LogThreshold;
+(function (LogThreshold) {
+    LogThreshold[LogThreshold["NONE"] = 0] = "NONE";
+    LogThreshold[LogThreshold["DEBUG"] = 1] = "DEBUG";
+    LogThreshold[LogThreshold["INFO"] = 2] = "INFO";
+    LogThreshold[LogThreshold["ERROR"] = 3] = "ERROR";
+    LogThreshold[LogThreshold["CRITICAL"] = 4] = "CRITICAL";
+})(LogThreshold || (LogThreshold = {}));
+var Logger = /** @class */ (function () {
+    function Logger() {
+    }
+    Logger.debug = function (msg) {
+        if (this.threshold != LogThreshold.DEBUG) {
+            return;
+        }
+        console.log("[DEBUG]: " + msg);
+    };
+    Logger.info = function (msg) {
+        if (this.threshold > LogThreshold.INFO) {
+            return;
+        }
+        console.info("[INFO]: " + msg);
+    };
+    Logger.error = function (msg) {
+        if (this.threshold > LogThreshold.ERROR) {
+            return;
+        }
+        console.error("[ERROR]: " + msg);
+    };
+    Logger.critical = function (msg) {
+        if (this.threshold > LogThreshold.CRITICAL) {
+            return;
+        }
+        console.error("[CRITICAL]: " + msg);
+    };
+    Logger.data = function (data) {
+        if (this.threshold < LogThreshold.DEBUG) {
+            return;
+        }
+        console.log(data);
+    };
+    Logger.threshold = LogThreshold.DEBUG;
+    return Logger;
+}());
+exports.Logger = Logger;
+
+
+/***/ }),
+
+/***/ "./src/primitives/Point.ts":
+/*!*********************************!*\
+  !*** ./src/primitives/Point.ts ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Point = /** @class */ (function () {
+    function Point(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    return Point;
+}());
+exports.default = Point;
+
+
+/***/ }),
+
+/***/ "./src/primitives/transform.ts":
+/*!*************************************!*\
+  !*** ./src/primitives/transform.ts ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Transform = /** @class */ (function () {
+    function Transform(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+    Object.defineProperty(Transform, "empty", {
+        /**
+         * Returns a new empty transform object. Meaning the x, y, width, and height
+         * values are all zero.
+         *
+         * @author NSSure
+         * @since 11/12/2020
+         */
+        get: function () {
+            return new Transform(0, 0, 0, 0);
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Transform;
+}());
+exports.default = Transform;
+
+
+/***/ }),
+
+/***/ "./src/scaffold.ts":
+/*!*************************!*\
+  !*** ./src/scaffold.ts ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Scaffold = /** @class */ (function () {
+    function Scaffold() {
+        this.title = 'Yak Engine Application';
+        this.scenes = new Array();
+    }
+    return Scaffold;
+}());
+exports.default = Scaffold;
+
+
+/***/ }),
+
+/***/ "./src/scene-manager.ts":
+/*!******************************!*\
+  !*** ./src/scene-manager.ts ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var SceneManager = /** @class */ (function () {
+    function SceneManager() {
+    }
+    SceneManager.load = function (sceneName) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, fetch("./scenes/" + sceneName + ".json")];
+                    case 1: return [4 /*yield*/, (_a.sent()).json()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    return SceneManager;
+}());
+exports.default = SceneManager;
+
+
+/***/ }),
+
+/***/ "./src/state/state-manager.ts":
+/*!************************************!*\
+  !*** ./src/state/state-manager.ts ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var StateManager = /** @class */ (function () {
+    function StateManager() {
+    }
+    StateManager.commit = function (key, value) {
+        StateManager.data.set(key, value);
+    };
+    StateManager.get = function (key) {
+        if (StateManager.data.has(key)) {
+            return StateManager.data.get(key);
+        }
+        return null;
+    };
+    StateManager.exists = function (key) {
+        return StateManager.data.has(key);
+    };
+    StateManager.delete = function (key) {
+        if (StateManager.data.has(key)) {
+            StateManager.data.delete(key);
+        }
+    };
+    StateManager.data = new Map();
+    return StateManager;
+}());
+exports.default = StateManager;
+
+
+/***/ }),
+
+/***/ "./src/time.ts":
+/*!*********************!*\
+  !*** ./src/time.ts ***!
+  \*********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Time = /** @class */ (function () {
+    function Time() {
+    }
+    Time.calculateDeltaTime = function (time) {
+        var delta = (time - this.lastTimestamp) / 1000.0;
+        delta = Math.min(delta, 0.25); // maximum delta of 250 ms
+        this.lastTimestamp = delta;
+        this.fps = 1 / Time.deltaTime;
+    };
+    Time.lastTimestamp = performance.now();
+    return Time;
+}());
+exports.default = Time;
+
+
+/***/ }),
+
+/***/ "./src/ui/ui-fragments-renderer.ts":
+/*!*****************************************!*\
+  !*** ./src/ui/ui-fragments-renderer.ts ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var constants_1 = __webpack_require__(/*! ../constants */ "./src/constants.ts");
+var is_coordinate_contained_1 = __importDefault(__webpack_require__(/*! ../helpers/is-coordinate-contained */ "./src/helpers/is-coordinate-contained.ts"));
+var UIFragmentsRenderer = /** @class */ (function () {
+    function UIFragmentsRenderer(canvas) {
+        this.graphics = canvas;
+    }
+    UIFragmentsRenderer.prototype.run = function () {
+        this.draw();
+        this.processInteractables();
+    };
+    UIFragmentsRenderer.prototype.draw = function () {
+        var _this = this;
+        this.graphics.fragments.uiFragments.forEach(function (uiFragment) {
+            if (uiFragment.isEnabled) {
+                _this.graphics.context.beginPath();
+                if (uiFragment.isHovered && uiFragment.hoverState) {
+                    _this.graphics.context.fillStyle = uiFragment.hoverState.backgroundColor;
+                }
+                else {
+                    _this.graphics.context.fillStyle = uiFragment.backgroundColor;
+                }
+                _this.graphics.context.fillRect(uiFragment.transform.x, uiFragment.transform.y, uiFragment.transform.width, uiFragment.transform.height);
+                _this.graphics.context.closePath();
+                switch (uiFragment.constructor.name) {
+                    case constants_1.uiConstants.entityName.button:
+                        _this.graphics.context.font = '16px Arial';
+                        _this.graphics.context.fillStyle = 'white';
+                        _this.graphics.context.textAlign = 'center';
+                        _this.graphics.context.textBaseline = 'middle';
+                        var x = uiFragment.transform.x + (uiFragment.transform.width / 2);
+                        var y = uiFragment.transform.y + (uiFragment.transform.height / 2);
+                        _this.graphics.context.fillText(uiFragment.text, x, y);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+    };
+    UIFragmentsRenderer.prototype.processInteractables = function () {
+        var _this = this;
+        this.graphics.fragments.uiFragments.forEach(function (uiFragment) {
+            // If the fragment is not interactive simply check the position check.
+            if (uiFragment.isInteractive) {
+                if (is_coordinate_contained_1.default(_this.graphics.mousePosition, uiFragment.transform)) {
+                    uiFragment.isHovered = true;
+                    if (uiFragment.onHover) {
+                        uiFragment.onHover();
+                    }
+                }
+                else if (uiFragment.isHovered) {
+                    uiFragment.isHovered = false;
+                }
+            }
+        });
+    };
+    UIFragmentsRenderer.prototype.isHoveredFragmentClicked = function (point) {
+        var uiFragment = this.graphics.fragments.uiFragments.find(function (uiFragment) { return uiFragment.isHovered; });
+        if (uiFragment && uiFragment.onClick) {
+            uiFragment.onClick();
+        }
+        return uiFragment;
+    };
+    return UIFragmentsRenderer;
+}());
+exports.default = UIFragmentsRenderer;
+
+
+/***/ })
+
+/******/ });
+
+        </script>
+    </body>
+</html>

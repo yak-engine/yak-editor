@@ -50,7 +50,7 @@
             list-style-type: none;
             
             > li {
-                padding: $padding-default;
+                padding: 8px 15px;
     
                 a {
                     color: $color-dark;
@@ -62,7 +62,7 @@
                 }
 
                 .nav-menu.fill-dark & {
-                    background-color: black;
+                    background-color: #212121;
                 }
     
                 &:hover {

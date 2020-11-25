@@ -1,5 +1,5 @@
 <template>
-  <div class="default-component">
+  <div class="component default-component">
     <main-menu></main-menu>
     <map-editor></map-editor>
 
